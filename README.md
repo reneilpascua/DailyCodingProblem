@@ -20,7 +20,8 @@ A way to test, given many inputs and expected outputs in the template solution f
 
 ### VS Code
 If you're using VS Code, in the .vscode, ensure your cwd uses '${fileDirname}' so that it runs in the ./problems folder so imports will work. This helps to use debug facilities.
-```{
+```
+{
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
@@ -35,4 +36,5 @@ If you're using VS Code, in the .vscode, ensure your cwd uses '${fileDirname}' s
             "console": "integratedTerminal"
         }
     ]
-}```
+}
+```
