@@ -19,7 +19,7 @@ A way to test, given many inputs and expected outputs in the template solution f
 3. Must be inside ./problems when you run the python files, or else importing helpers module won't work.
 
 ### VS Code
-If you're using VS Code, in the .vscode, ensure your cwd uses '${fileDirname}' so that it runs in the ./problems folder so imports will work. This helps to use debug facilities.
+If you're using VS Code, in .vscode/launch.json, ensure your cwd uses '${fileDirname}' so that it runs in the ./problems folder so imports will work. This helps to use debug facilities.
 ```
 {
     // Use IntelliSense to learn about possible attributes.
