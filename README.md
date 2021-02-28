@@ -9,7 +9,11 @@ A way to test, given many inputs and expected outputs in the template solution f
 
 ### Getting Started
 1. Optional: Create a virtual environment and activate it
+
     ```python -m venv venv``` --> activate, using ```source ./venv/bin/activate```
+
 2. ```pip install numpy``` or ```pip install -r requirements.txt``` if there are other libs
+
     some solutions might use numpy, although usually you would try to solve a coding problem without extra libs.
+
 3. Must be inside ./problems when you run the python files, or else importing helpers module won't work.
