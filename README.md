@@ -17,3 +17,22 @@ A way to test, given many inputs and expected outputs in the template solution f
     some solutions might use numpy, although usually you would try to solve a coding problem without extra libs.
 
 3. Must be inside ./problems when you run the python files, or else importing helpers module won't work.
+
+### VS Code
+If you're using VS Code, in the .vscode, ensure your cwd uses '${fileDirname}' so that it runs in the ./problems folder so imports will work. This helps to use debug facilities.
+```{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "cwd": "${fileDirname}",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+}```
