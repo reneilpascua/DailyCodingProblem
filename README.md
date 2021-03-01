@@ -10,7 +10,8 @@ A way to test, given many inputs and expected outputs in the template solution f
 ### Getting Started
 1. Optional: Create a virtual environment and activate it
 
-    ```python -m venv venv``` --> activate, using ```source ./venv/bin/activate```
+    create: ```python -m venv venv```
+    activate:```source ./venv/bin/activate```
 
 2. ```pip install numpy``` or ```pip install -r requirements.txt``` if there are other libs
 
@@ -22,9 +23,6 @@ A way to test, given many inputs and expected outputs in the template solution f
 If you're using VS Code, in .vscode/launch.json, ensure your cwd uses '${fileDirname}' so that it runs in the ./problems folder so imports will work. This helps to use debug facilities.
 ```
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
