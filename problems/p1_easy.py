@@ -14,7 +14,7 @@ Bonus: Can you do this in one pass?
 ''')
 
 # take input
-n_, list_ = helpers.get_list_of_numbers()
+n_, list_ = helpers.get_list_of_integers()
 k_ = int(input('Enter the number k: '))
 
 

@@ -14,7 +14,7 @@ Follow-up: what if you can't use division?
 ''')
 
 # take input
-n_, list_ = helpers.get_list_of_numbers();
+n_, list_ = helpers.get_list_of_integers();
 
 # solution
 

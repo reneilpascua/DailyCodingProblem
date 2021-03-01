@@ -1,0 +1,39 @@
+approach learned from https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
+question: does this account for non-unique elements in the array?
+
+loop through the array. to mark an item as visited, we mark the item at that index as negative! (if index < size and a[index] > 0)
+current assumptions: all positive unique ints
+----------
+ex1 : a = [3,1,4,2], size=4, expected answer: 5
+
+iter 0:
+	num = 3
+	index = abs(num) - 1 = 2
+	set a[index] = -a[index]
+	a is now [3,1,-4,2]
+
+iter 1:
+	num = 1
+	index = abs(num) - 1 = 0
+	set a[index] = -a[index]
+	a is now [-3, 1, -4, 2]
+
+iter 2:
+	num = -4
+	index = abs(num) - 1 = 3
+	set a[index] = -a[index]
+	a is now [-3, 1, -4, -2]
+
+iter 3:
+	num = -2
+	index = abs(num) - 1 = 1
+	set a[index] = -a[index]
+	a is now [-3, -1, -4, -2]
+
+loop through a and search for a positive number. if nothing comes up, return size+1
+
+no positive ints left in a, so the answer in this example is 4+1 = 5.
+-----------
+ex2 : a = [5,1,4,2], size=4, expected answer: 3
+
+
