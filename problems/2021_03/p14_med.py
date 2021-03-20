@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..')
+sys.path.append('../..')
 from helpers import helpers
 
 print('''
@@ -61,6 +61,4 @@ def approximatePi(N, R):
 
 # python p14_med.py 1000000 100 
 # arg[1] is N, arg[2] is R (arg[0] is the script name)
-print(approximatePi(int(sys.argv[1]), int(sys.argv[2])))
-
-
+print(f'pi ~ {approximatePi(int(sys.argv[1]), int(sys.argv[2])):.3f}\napproximated using {sys.argv[1]} samples')
