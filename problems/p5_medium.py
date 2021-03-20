@@ -3,7 +3,7 @@ sys.path.append('..')
 from helpers import helpers
 
 print('''
-[MEDIUM] [UNFINISHED] Mar. 1, 2021
+[MEDIUM] Mar. 1, 2021
 This problem was asked by Jane Street.
 
 cons(a, b) constructs a pair, and car(pair) and cdr(pair) returns the first and last element of that pair. For example, car(cons(3, 4)) returns 3, and cdr(cons(3, 4)) returns 4.
@@ -24,17 +24,26 @@ def cons(a, b):
     def pair(f):
         return f(a, b)
     return pair
-    # returns f(a,b)
 
-def car(f):
-    def pair(a,b):
-        return a
-    return f(pair)
+def car(pair): # takes f(a,b)
+    def return_first(first, last):
+        return first;
+    
+    return pair(return_first)
 
-def cdr(f):
-    def pair(a,b):
-        return b
-    return f(pair)
+def cdr(pair): # takes f(a, b)
+    def return_last(first, last):
+        return last;
+
+    return pair(return_last);
+
 
 print(cons(3,4)) # returns f(3,4)
-print(car(cons(3,4)))
+
+print(car(cons(3,4))) # returns 3
+# p much this calls
+# cons.pair(return_first(a,b))
+
+print(cdr(cons(3,4))) # returns 4
+# p much this calls
+# cons.pair(return_first(a,b))
