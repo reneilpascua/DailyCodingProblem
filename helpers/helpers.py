@@ -1,6 +1,15 @@
+import re
+
+def validate_token_as_int(str):
+    return True
+
+def get_int(msg):
+    n_ = int(input(msg))
+    return n_
+
 # user input: an integer list of known length n
 def get_list_of_integers():
-    n_ = int(input('How long is the list of integers? '))
+    n_ = get_int('How long is the list of integers? ')
     list_ = []
     for i in range (0,n_):
         num = int(input(f'enter the {i+1}\'th integer in the list: '))
