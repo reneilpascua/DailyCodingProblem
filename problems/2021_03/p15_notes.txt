@@ -1,0 +1,93 @@
+ok i hated this question, couldn't understand what it was asking for and idk if it was just poorly worded.
+HERE IS WHAT IT MEANS:
+
+a large stream of data is coming in, 1 value at a time.
+your goal: by the end of the stream, give a random value that came from the stream. anything goes during the middle, but by the end, you give ONE value.
+the challenge:
+    1. obvs u cant store the stream in memory because it's too large
+    2. how you picked the value must be provably ** uniform **!!!
+
+SOLUTION
+- process the stream 1 value at a time, and keep track of how many values have passed already (called count).
+    - important because in uniform random dist., the probability must be 1/N.
+    - keep track of 2 vars:
+        - count = how many values have come in
+        - res = the randomly chosen value (ie. return value of F)
+- create the function F that takes 1 value at a time from the stream.
+    - say, the n'th value of the stream comes in. the value returned by this function is a uniform random value from a stream of n values.
+    - base case: if count = 1, res=val
+    - extended case: get random int x between 1 and count (inclusive). if x=1, reassign res=newval, else keep res=oldval
+        - why does this work?
+            - count = X > 1, incoming value: newval.
+                - before the loop began, any value V had 1/(X-1) chance of being assigned res=V.
+                - random int x between 1 and count (inclusive)
+                - newval is assigned to res IF x=1, ie. a 1/X chance.
+                - x ≠ 1 has a (X-1)/X chance
+                - any previous value V would have a total chance of 1/(X-1) * (X-1)/X = 1/X chance!
+                ==> still uniform.
+
+
+- !! EXAMPLE !! this is where you will understand.
+    - test stream: ['a', 'b', 'c', 'd', 'e', ...]
+    - base case:
+        count = 1 ('a' comes in)
+            - if the stream has only given 1 value, F will pick that 1 value! obvs
+            - res = 'a'
+    - extended case:
+        count = 2 ('b' comes in)
+            - res = 'a' currently.
+                - must decide whether to replace 'a' with 'b' to assign to res.
+                - probability of that ^ happening should be 1/2. the probability of it not happening should also be 1/2.
+                    - in a stream of 2 vals, each val should have 1/2 chance of being the res.
+            - randomly pick from 2 numbers (1 or 2). if that random number is 1, then do res='b', otherwise keep res='a'
+            - probabilities at the end:    
+                - P(res = 'a') = 1/2
+                - p(res = 'b') = 1/2
+                - still uniform!
+        
+        count = 3 ('c' comes in)
+            
+            case 1: res = 'a' currently (chance of case 1 = 1/2)
+            - randomly pick from [1,3] if that number is 1, then do res='c', otherwise keep res='a'
+            - probabilities:
+                - P(res = 'a') = 2/3
+                - p(res = 'c') = 1/3
+
+            case 2: res = 'b' currently (chance of case 2 = 1/2)
+            - randomly pick from [1,3] if that number is 1, then do res='c', otherwise keep res='b'
+            - probabilities:
+                - P(res = 'b') = 2/3
+                - p(res = 'c') = 1/3
+
+            - probabilities at the end:
+                - P(res = 'a') = (1/2)*(2/3) = 1/3
+                - P(res = 'b') = (1/2)*(2/3) = 1/3
+                - P(res = 'c') = (1/2)*(1/3) + (1/2)*(1/3) = 1/3
+                - still uniform!
+
+        count = 4 ('d' comes in)
+
+            case 1: res = 'a' currently (chance of case 1 = 1/3)
+            - randomly pick from [1,4] if that number is 1, then do res='d', otherwise keep res='a'
+            - probabilities:
+                - P(res = 'a') = 3/4
+                - p(res = 'd') = 1/4
+
+            case 2: res = 'b' currently (chance of case 2 = 1/3)
+            - randomly pick from [1,4] if that number is 1, then do res='d', otherwise keep res='b'
+            - probabilities:
+                - P(res = 'b') = 3/4
+                - p(res = 'd') = 1/4
+
+            case 3: res = 'a' currently (chance of case 3 = 1/3)
+            - randomly pick from [1,4] if that number is 1, then do res='d', otherwise keep res='c'
+            - probabilities:
+                - P(res = 'c') = 3/4
+                - p(res = 'd') = 1/4
+
+            - probabilities at the end:
+                - P(res = 'a') = (1/3)*(3/4) = 1/4
+                - P(res = 'b') = (1/3)*(3/4) = 1/4
+                - P(res = 'c') = (1/3)*(3/4) = 1/4
+                - P(res = 'd') = (1/3)*(1/4)+(1/3)*(1/4)+(1/3)*(1/4) = 1/4
+                - still uniform!
