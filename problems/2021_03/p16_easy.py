@@ -1,6 +1,6 @@
+from helpers import helpers  # only works if the script is in problems/month_folder/
 import sys
 sys.path.append('../..')
-from helpers import helpers # only works if the script is in problems/month_folder/
 
 print('''
 [easy] mar. 12, 2021
@@ -15,6 +15,23 @@ You should be as efficient with time and space as possible.
 
 ''')
 
-# take input
+'''
+Implement solution
+'''
 
-# solution
+
+class Solution:
+
+    def __init__(self):
+        pass
+
+    def record(self, order_id):
+        pass
+
+    def get_last(self, i):
+        pass
+
+
+'''
+Driver
+'''
