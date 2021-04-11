@@ -14,3 +14,5 @@ Implement solution
 '''
 Driver
 '''
+if __name__ == '__main__':
+    pass
