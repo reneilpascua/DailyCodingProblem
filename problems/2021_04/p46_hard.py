@@ -38,9 +38,8 @@ def find_longest_pal(s):
                         break
                     else:
                         tmp+=1
-                j-=1
-            else:
-                j-=1
+            
+            j-=1
 
     print(f'\nlongest palindrome in {s} is\n{longest_begin}-{longest_end}: {longest_pal}') if longest_pal!='' else print(f'no palindrome in {s}')
             
@@ -50,4 +49,4 @@ def find_longest_pal(s):
 Driver
 '''
 if __name__ == '__main__':
-    find_longest_pal('xxxaabcddddcbxaaaxxx')
+    find_longest_pal('abcdefghijklmnopqrstuvwx1xyz')
