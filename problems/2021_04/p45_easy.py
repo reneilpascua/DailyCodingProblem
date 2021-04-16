@@ -15,7 +15,6 @@ Implement solution
 import random as rand
 import numpy as np
 
-# implement rand5()
 def rand5():
     return rand.randint(1,5)
 
