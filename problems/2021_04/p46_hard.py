@@ -24,12 +24,14 @@ def find_longest_pal(s):
         j = len(s) - 1
         
         while j > i:    
-            if s[j] == s[i]: # then we may have a palindrome, sir!
-                print(f'we may have a palindrome, sir! {i}-{j}')
+            if (j-i < longest_end-longest_begin): break # no need to keep searching if longest possible is found
+
+            if  s[j] == s[i]: # then we may have a palindrome
+                print(f'match found at {i}-{j}')
                 tmp = 0
                 while s[j-tmp] == s[i+tmp]:
                     if (j-tmp)-(i+tmp) <= 1: # then the left and right pointer have met, and this is a palindrome
-                        print(f'we found a palindrome...{i}-{j}: {s[i:j+1]}')
+                        print(f'we found a palindrome at {i}-{j}: {s[i:j+1]}')
                         if (j-i) >= longest_end - longest_begin:
                             longest_end, longest_begin = j, i
                             longest_pal = s[i:j+1]
@@ -40,7 +42,7 @@ def find_longest_pal(s):
             else:
                 j-=1
 
-    print(f'longest palindrome is {longest_begin}-{longest_end}: {longest_pal}') if longest_pal!='' else print(f'no palindrome in {s}')
+    print(f'\nlongest palindrome in {s} is\n{longest_begin}-{longest_end}: {longest_pal}') if longest_pal!='' else print(f'no palindrome in {s}')
             
 
 
@@ -48,4 +50,4 @@ def find_longest_pal(s):
 Driver
 '''
 if __name__ == '__main__':
-    find_longest_pal('aabcddcba')
+    find_longest_pal('xxxaabcddddcbxaaaxxx')
