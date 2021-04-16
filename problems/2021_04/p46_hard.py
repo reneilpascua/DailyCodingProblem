@@ -14,10 +14,38 @@ For example, the longest palindromic substring of "aabcdcb" is "bcdcb". The long
 '''
 Implement solution
 '''
+def find_longest_pal(s):
+    longest_pal = ''
+    longest_begin = 0
+    longest_end = 0
+
+    # traverse through the string using i as left pointer, j as right pointer
+    for i in range(len(s)):
+        j = len(s) - 1
+        
+        while j > i:    
+            if s[j] == s[i]: # then we may have a palindrome, sir!
+                print(f'we may have a palindrome, sir! {i}-{j}')
+                tmp = 0
+                while s[j-tmp] == s[i+tmp]:
+                    if (j-tmp)-(i+tmp) <= 1: # then the left and right pointer have met, and this is a palindrome
+                        print(f'we found a palindrome...{i}-{j}: {s[i:j+1]}')
+                        if (j-i) >= longest_end - longest_begin:
+                            longest_end, longest_begin = j, i
+                            longest_pal = s[i:j+1]
+                        break
+                    else:
+                        tmp+=1
+                j-=1
+            else:
+                j-=1
+
+    print(f'longest palindrome is {longest_begin}-{longest_end}: {longest_pal}') if longest_pal!='' else print(f'no palindrome in {s}')
+            
 
 
 '''
 Driver
 '''
 if __name__ == '__main__':
-    pass
+    find_longest_pal('aabcddcba')
