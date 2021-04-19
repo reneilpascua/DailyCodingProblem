@@ -58,6 +58,7 @@ Xth loop:
     i=X, k=52-X, j=[0 - (52-X-1)]
 '''
 import numpy as np
+import matplotlib.pyplot as plt
 def probability_density(card, num_shuffles):
     '''
     @param card:            a card to track (use int 1-52 inclusive)
@@ -66,12 +67,19 @@ def probability_density(card, num_shuffles):
     looks at distribution of places where a card could end up. if each of 52! permutations are likely, each element will be the sameish
     '''
     freqs = np.zeros(52)
+    pct_res = np.zeros(52)
     for i in range(num_shuffles):
         deck = new_deck_ints()
         shuffle(deck)
         where_is_the_card = deck.index(card)
         freqs[where_is_the_card] += 1
-    return freqs
+    
+    mean = freqs.mean()
+    for i in range(len(pct_res)):
+        pct_res[i] = 100*(freqs[i] - mean)/mean
+    
+    plt.plot(pct_res)
+    plt.show()
 
 
 
@@ -80,10 +88,11 @@ def probability_density(card, num_shuffles):
 Driver
 '''
 if __name__ == '__main__':
-    # deck = new_deck_ints()
-    # print(f'original: {deck}')
-    # shuffle(deck)
-    # print(f'shuffled: {deck}')
-    print(probability_density(23, 10000)) # shows that the card 23 can end up in any part of the deck uniformally
-    # print(probability_density(1, 10000)) # edge case
-    # print(probability_density(52, 10000)) # edge case
+    deck = new_deck_ints()
+    print(f'original: {deck}')
+    shuffle(deck)
+    print(f'shuffled: {deck}')
+    print('\nis this shuffle uniform over many shuffles?')
+    probability_density(card=23, num_shuffles=10000) # shows that the card 23 can end up in any part of the deck uniformally
+    # probability_density(1, 10000) # edge case
+    # probability_density(52, 10000) # edge case
