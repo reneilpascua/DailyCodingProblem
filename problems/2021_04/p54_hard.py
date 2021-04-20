@@ -45,34 +45,11 @@ class Hello:
             ''')
             
     def solve(self):
-        row_index=0
-        col_index=0
-        # print(f'is the variable row_index an integer? {isinstance(row_index, int)}')
-        # if isinstance(row_index, int):
-        while row_index < 9: # TypeError, thinks row_index is a SudokuSolver wtf??
-            if self.__forwardtrack(row_index, col_index): # found a number that works for this cell
-                row_index, col_index = self.__next(row_index,col_index)
-            else: # backtrack until a cell that isn't an initial value
-                row_index, col_index = self.__next(row_index,col_index,backward=True)
-                while (self.is_init[row_index][col_index]):
-                    row_index, col_index = self.__next(row_index,col_index,backward=True)
-                    if row_index==-1: # backtracked past the beginning
-                        print('no solution')
+        
+        # restarting everything because of while loop bug
 
                 
         return self.soln
-    
-    def __next(i : int, j : int, backward=False):
-        new_j = j-1 if backward else j+1
-        new_i = i
-        # wrap
-        if new_j==9:
-            new_i+=1
-            new_j=0
-        elif j==-1:
-            new_i-=1
-            new_j=8
-        return new_i, new_j
 
     def __forwardtrack(self, i, j):
         '''
