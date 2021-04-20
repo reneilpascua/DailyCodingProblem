@@ -17,7 +17,9 @@ Implement solution
 '''
 from datetime import datetime
 class SudokuSolver:
-    
+    '''
+    sudoku solver using backtracking
+    '''
     def __init__(self):
         self.is_init = [] # says whether to protect this cell because it's an initial value.
         self.soln = [] # solution to the sudoku
@@ -53,7 +55,7 @@ class SudokuSolver:
             [
                 [row 1], [row 2], [row 3], ..., [row 8], [row 9]
             ]
-            where each row has 9 ints -- the empty cells are 0.
+            where each row has 9 ints from 0-9; 0 represents empty cells.
             ''')
     
     def __next_with_wrap(self,i, j, backward = False):
@@ -187,11 +189,12 @@ class SudokuSolver:
         if self.solved:
             print('the initial puzzle:')
             self.__print_initial()
-            print('\none solution:')
+            print('\nsolution:')
             self.__print_soln()
             print('')
             print(f'backtracks:\t\t{self.n_backtracks}')
             print(f'time:\t\t\t{self.soln_time}')
+            print('disclaimer: this algorithm finds the first available solution. there may be more than one valid solution.')
         else:
             print('no solution has been found for')
             self.__print_initial()
